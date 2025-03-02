@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const taskForm = document.getElementById('task-form');
 
     // Função para carregar tarefas
+
     const loadTasks = async () => {
         try {
             const response = await fetch('https://jsonplaceholder.typicode.com/todos');
@@ -21,7 +22,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+
     // Função para adicionar uma nova tarefa
+
     taskForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         try {
@@ -42,41 +45,39 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Função para editar uma tarefa
-    window.editTask = async (taskId) => {
-        try {
-            const newTitle = prompt('Digite o novo título da tarefa:');
-            if (newTitle) {
-                const response = await fetch(`https://jsonplaceholder.typicode.com/todos/${taskId}`, {
-                    method: 'PUT',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ title: newTitle })
-                });
-                if (!response.ok) throw new Error('Erro ao editar tarefa');
+// Função para editar uma tarefa
+window.editTask = async (taskId) => {
+    try {
+        const newTitle = prompt('Digite o novo título da tarefa:');
+        if (newTitle) {
+            const response = await fetch(`https://jsonplaceholder.typicode.com/todos${taskId}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ title: newTitle })
+            });
+            if (!response.ok) throw new Error('Erro ao editar tarefa');
 
-                alert('Tarefa editada com sucesso!');
-                loadTasks();
-            }
-        } catch (error) {
-            alert(error.message);
+            alert('Tarefa editada com sucesso!');
+            loadTasks();
         }
-    };
-
-    // Função para excluir uma tarefa
+    } catch (error) {
+        alert(error.message);
+    }};
+// Função para excluir uma tarefa
     window.deleteTask = async (taskId) => {
-        try {
-            if (confirm('Tem certeza que deseja excluir esta tarefa?')) {
-                const response = await fetch(`https://jsonplaceholder.typicode.com/todos/${taskId}`, { method: 'DELETE' });
-                if (!response.ok) throw new Error('Erro ao excluir tarefa');
+    try {
+        if (confirm('Tem certeza que deseja excluir esta tarefa?')) {
+            const response = await fetch(`https://jsonplaceholder.typicode.com/todos/${taskId}`, { method: 'DELETE' });
+            if (!response.ok) throw new Error('Erro ao excluir tarefa');
 
-                alert('Tarefa excluída com sucesso!');
-                loadTasks();
-            }
-        } catch (error) {
-            alert(error.message);
+            alert('Tarefa excluída com sucesso!');
+            loadTasks();
         }
-    };
+    } catch (error) {
+        alert(error.message);
+    }};
 
-    // Carregar tarefas ao carregar a página
-    loadTasks();
+    
+    
+   
 });

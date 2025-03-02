@@ -77,3 +77,8 @@ main {
 #add-task button:hover {
     background-color: #555;
 }
+#inicio{
+    
+    text-transform: uppercase;
+
+}
