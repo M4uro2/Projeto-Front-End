@@ -5,26 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestão de Tarefas</title>
     <link rel="stylesheet" href="style.css">
-    <script src="javascript.js"></script>
 </head>
 <body>
     <header>
         <h1 id="inicio">Bem vindo</h1>
         <h1>Gestão de Tarefas</h1>
         <nav>
-            <ul>
-                <li><a href="#">Início</a></li>
-                <li><a href="#">Sobre</a></li>
-            </ul>
+           
         </nav>
     </header>
 
     <main>
-        <section id="task-list">
-            <h2>Lista de Tarefas</h2>
-            <ul id="tasks"></ul>
-        </section>
-
         <section id="add-task">
             <h2>Adicionar Nova Tarefa</h2>
             <form id="task-form">
@@ -40,6 +31,18 @@
                 <button type="submit">Adicionar Tarefa</button>
             </form>
         </section>
+        <section id="task-list">
+            <h2>Lista de Tarefas</h2>
+            <div>
+                <label for="userFilter">Filtrar por ID do Usuário:</label>
+                <input type="number" id="userFilter">
+                <button onclick="filterTasks()">Filtrar</button>
+            </div>
+            <ul id="tasks"></ul>
+        </section>
+
     </main>
+
+    <script src="javascript.js"></script>
 </body>
 </html>
