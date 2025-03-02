@@ -50,7 +50,7 @@ window.editTask = async (taskId) => {
     try {
         const newTitle = prompt('Digite o novo título da tarefa:');
         if (newTitle) {
-            const response = await fetch(`https://jsonplaceholder.typicode.com/todos/${taskId}`, {
+            const response = await fetch(`https://jsonplaceholder.typicode.com/todos${taskId}`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ title: newTitle })
