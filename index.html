@@ -9,14 +9,14 @@
 </head>
 <body>
     <header>
-        <h1 >Bem vindo</h1>
+        <h1 id="inicio">Bem vindo</h1>
         <h1>Gestão de Tarefas</h1>
     </header>
 
     <main>
-        <section >
+        <section id="adicionarTarefa">
             <h2>Adicionar Nova Tarefa</h2>
-            <form >
+            <form id="formulario-tarefa">
                 <label>ID do Usuário:</label>
                 <input type="number" id="idUsuario" required>
 
@@ -29,14 +29,14 @@
                 <button type="submit">Adicionar Tarefa</button>
             </form>
         </section>
-        <section>
+        <section id="lista-tarefas">
             <h2>Lista de Tarefas</h2>
             <div>
-                <label >Filtrar por ID do Usuário:</label>
+                <label id="filtrar">Filtrar por ID do Usuário:</label>
                 <input type="number" id="filtroUsuario">
                 <button>Filtrar</button>
             </div>
-            <ul></ul>
+            <ul id="tarefas"></ul>
         </section>
     </main>
 
