@@ -17,13 +17,13 @@
         <section id="adicionarTarefa">
             <h2>Adicionar Nova Tarefa</h2>
             <form id="formulario-tarefa">
-                <label>ID do Usuário:</label>
+                <label for="idUsuario">ID do Usuário:</label>
                 <input type="number" id="idUsuario" required>
 
-                <label>Título:</label>
+                <label for="titulo">Título:</label>
                 <input type="text" id="titulo" required>
 
-                <label>Descrição:</label>
+                <label for="descricao">Descrição:</label>
                 <textarea id="descricao"></textarea>
 
                 <button type="submit">Adicionar Tarefa</button>
@@ -32,9 +32,9 @@
         <section id="lista-tarefas">
             <h2>Lista de Tarefas</h2>
             <div>
-                <label id="filtrar">Filtrar por ID do Usuário:</label>
+                <label for="filtroUsuario" id="filtrar">Filtrar por ID do Usuário:</label>
                 <input type="number" id="filtroUsuario">
-                <button>Filtrar</button>
+                <button onclick="filtrarTarefas()">Filtrar</button>
             </div>
             <ul id="tarefas"></ul>
         </section>
