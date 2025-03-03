@@ -1,0 +1,97 @@
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    background-color: #f0f2f5;
+    color: black;
+    margin: 0;
+    padding: 0;
+}
+
+h2 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 30px;
+    font-weight: 300;
+    
+}
+
+header {
+    background-color: #3498db;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-weight: 300;
+}
+
+main {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+#tarefas {
+    list-style: none;
+    padding: 0;
+}
+
+#tarefas li {
+    background-color: #fff;
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 8px;
+
+}
+#adicionarTarefa form {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    margin-bottom: 40px;
+}
+
+#adicionarTarefa label {
+    display: block;
+    margin-bottom: 10px;
+    color: #2c3e50;
+    font-weight: bold;
+}
+
+#adicionarTarefa input, #adicionarTarefa textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+#adicionarTarefa button, #filtrarTarefas {
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#adicionarTarefa button:hover, #filtrarTarefas:hover {
+    background-color: #2980b9;
+}
+
+#filtrar {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color:rgb #2c3e50;
+}
+
+#filtroUsuario {
+    width: 200px;
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid rgb(228, 224, 224);
+    border-radius: 4px;
+}
