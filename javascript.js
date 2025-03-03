@@ -43,6 +43,34 @@ function inicializarAplicacao() {
             }
             renderizarTarefas();
         };
+         // Função para adicionar uma nova tarefa
+         formularioTarefa.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            try {
+                const idUsuario = document.getElementById('idUsuario').value;
+                const titulo = document.getElementById('titulo').value;
+                const descricao = document.getElementById('descricao').value;
+
+                const resposta = await fetch('https://jsonplaceholder.typicode.com/todos', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ userId: parseInt(idUsuario), title: titulo, description: descricao, completed: false })
+                });
+                if (!resposta.ok) throw new Error('Erro ao adicionar tarefa');
+
+                const novaTarefa = await resposta.json();
+
+                // Adiciona a nova tarefa aos arrays
+                todasTarefas.unshift(novaTarefa);
+                filtrarTarefas();
+
+                renderizarTarefas(); // Renderiza as tarefas novamente
+                alert('Tarefa adicionada com sucesso!');
+                formularioTarefa.reset();
+            } catch (erro) {
+                alert(erro.message);
+            }
+        });
     });
 }
 inicializarAplicacao();
