@@ -124,6 +124,35 @@ function inicializarAplicacao() {
                 alert(erro.message);
             }
         };
+        // Função para concluir uma tarefa
+        window.concluirTarefa = async (tarefaId) => {
+            try {
+                const resposta = await fetch(`https://jsonplaceholder.typicode.com/todos/${tarefaId}`, {
+                    method: 'PATCH',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ completed: true })
+                });
+                if (!resposta.ok) throw new Error('Erro ao concluir tarefa');
+
+                // Atualiza a tarefa nos arrays
+                const atualizarTarefa = (tarefas) => {
+                    const indiceTarefa = tarefas.findIndex(tarefa => tarefa.id === tarefaId);
+                    if (indiceTarefa !== -1) {
+                        tarefas[indiceTarefa].completed = true;
+                    }
+                };
+                atualizarTarefa(todasTarefas);
+                atualizarTarefa(tarefasFiltradas);
+
+                renderizarTarefas();
+                alert('Tarefa concluída com sucesso!');
+            } catch (erro) {
+                alert(erro.message);
+            }
+        };
+
+        // Carregar tarefas ao carregar a página
+        carregarTarefas();
     });
 }
 inicializarAplicacao();
