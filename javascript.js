@@ -106,6 +106,24 @@ function inicializarAplicacao() {
                 alert(erro.message);
             }
         };
+         // Função para excluir uma tarefa
+         window.excluirTarefa = async (tarefaId) => {
+            try {
+                if (confirm('Tem certeza que deseja excluir esta tarefa?')) {
+                    const resposta = await fetch(`https://jsonplaceholder.typicode.com/todos/${tarefaId}`, { method: 'DELETE' });
+                    if (!resposta.ok) throw new Error('Erro ao excluir tarefa');
+
+                    // Remove a tarefa dos arrays
+                    todasTarefas = todasTarefas.filter(tarefa => tarefa.id !== tarefaId);
+                    tarefasFiltradas = tarefasFiltradas.filter(tarefa => tarefa.id !== tarefaId);
+
+                    renderizarTarefas();
+                    alert('Tarefa excluída com sucesso!');
+                }
+            } catch (erro) {
+                alert(erro.message);
+            }
+        };
     });
 }
 inicializarAplicacao();
