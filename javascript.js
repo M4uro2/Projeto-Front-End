@@ -71,6 +71,41 @@ function inicializarAplicacao() {
                 alert(erro.message);
             }
         });
+         // Função para editar uma tarefa
+         window.editarTarefa = async (tarefaId) => {
+            try {
+                const tarefaParaEditar = todasTarefas.find(tarefa => tarefa.id === tarefaId);
+                if (!tarefaParaEditar) {
+                    throw new Error('Tarefa não encontrada');
+                }
+
+                const novoTitulo = prompt('Digite o novo título da tarefa:', tarefaParaEditar.title);
+                if (novoTitulo !== null && novoTitulo !== '') {
+                    const resposta = await fetch(`https://jsonplaceholder.typicode.com/todos/${tarefaId}`, {
+                        method: 'PATCH',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ title: novoTitulo })
+                    });
+                    if (!resposta.ok) throw new Error('Erro ao editar tarefa');
+
+                    // Atualiza a tarefa nos arrays
+                    const atualizarTarefa = (tarefas) => {
+                        const indiceTarefa = tarefas.findIndex(tarefa => tarefa.id === tarefaId);
+                        if (indiceTarefa !== -1) {
+                            tarefas[indiceTarefa].title = novoTitulo;
+                        }
+                    };
+                    atualizarTarefa(todasTarefas);
+                    atualizarTarefa(tarefasFiltradas);
+
+                    renderizarTarefas();
+                    alert('Tarefa editada com sucesso!');
+                }
+            } catch (erro) {
+                console.error('Erro ao editar tarefa:', erro);
+                alert(erro.message);
+            }
+        };
     });
 }
 inicializarAplicacao();
