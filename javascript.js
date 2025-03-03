@@ -33,6 +33,16 @@ function inicializarAplicacao() {
             </li>
         `).join('');
         };
+         // Função para filtrar tarefas por usuário
+         window.filtrarTarefas = () => {
+            const idUsuario = filtroUsuario.value;
+            if (idUsuario) {
+                tarefasFiltradas = todasTarefas.filter(tarefa => tarefa.userId === parseInt(idUsuario));
+            } else {
+                tarefasFiltradas = todasTarefas;
+            }
+            renderizarTarefas();
+        };
     });
 }
 inicializarAplicacao();
